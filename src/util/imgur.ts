@@ -21,8 +21,10 @@ export type ImageType = {
   parentPage: string
 }
 
-export const queryImage = async (query: string | string[], page?: number) => {
-  if (!query) return null
+export const queryImage = async (query: string, page?: string) => {
+  if (!query) {
+    return null
+  }
 
   const requestOptions: RequestInit = {
     method: "GET",
@@ -30,8 +32,10 @@ export const queryImage = async (query: string | string[], page?: number) => {
     redirect: "follow",
   }
 
+  const pageNumber = page && !Number.isNaN(Number(page)) ? page : "0"
+
   try {
-    const url = `${API_URL}${page ? `/${page}` : ""}?q=${query}`
+    const url = `${API_URL}${page ? `/${parseInt(pageNumber)}` : ""}?q=${query}`
     const res = await fetch(url, requestOptions)
     const data: ImgurRestApi.Response<ImgurRestApi.GalleryItem[]> =
       await res.json()
