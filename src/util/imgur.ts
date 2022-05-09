@@ -57,22 +57,32 @@ export const convertImgurType = (
   imgurItem: ImgurRestApi.GalleryItem
 ): ImageType => {
   let activeImage: ImgurRestApi.Image | ImgurRestApi.GalleryImage
-
   if (imgurItem.is_album) {
     activeImage = (imgurItem as ImgurRestApi.GalleryAlbum).images[0]
   } else activeImage = imgurItem as ImgurRestApi.GalleryImage
+
+  let activeImageLink = activeImage.animated
+    ? activeImage.mp4 || ""
+    : activeImage.link
+  activeImageLink = activeImageLink.replace(/^http:\/\//i, "https://")
+
+  const isWider = activeImage.width > activeImage.height
+  const thumbnailFactor = isWider
+    ? activeImage.width / 160
+    : activeImage.height / 160
+
   return {
     type: activeImage.type || "image/",
     width: activeImage.width || 0,
     height: activeImage.height || 0,
     size: activeImage.size || 0,
-    url: activeImage.link || "",
-    // thumbnail: {
-    //   url: string
-    //   width: number
-    //   height: number
-    // }
+    url: activeImageLink,
+    thumbnail: {
+      url: `${activeImageLink.replace(/(\.[^.]+)$/i, "t.jpg")}`,
+      width: isWider ? 160 : Math.round(activeImage.width / thumbnailFactor),
+      height: isWider ? Math.round(activeImage.height / thumbnailFactor) : 160,
+    },
     description: imgurItem.title || "",
-    parentPage: imgurItem.link.replace(/\.[^/.]+$/, "") || "",
+    parentPage: activeImageLink.replace("i.", "").replace(/\.[^/.]+$/, ""),
   }
 }

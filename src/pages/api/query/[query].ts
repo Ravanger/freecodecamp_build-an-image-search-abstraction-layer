@@ -6,8 +6,6 @@ type ResponseDataType = {
   images: ImageType[]
 }
 
-// TODO: Thumbnails
-
 const query = async (
   req: NextApiRequest,
   res: NextApiResponse<ResponseDataType | {}>
@@ -24,7 +22,7 @@ const query = async (
       const data = await queryImage(query, page)
       if (!data) return res.status(500).json({ error: "Failed to get images" })
       const images = data.map((imgurItem) => convertImgurType(imgurItem))
-      return res.status(200).json(images)
+      return res.status(200).json({ images })
     default:
       return res.status(405).json({})
   }
