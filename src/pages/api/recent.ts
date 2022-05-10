@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next"
+import { loadRecentQueriesFromDatabase } from "../../util/firebase"
 
 type ResponseDataType = {}
 
@@ -8,7 +9,8 @@ const query = async (
 ) => {
   switch (req.method) {
     case "GET":
-      return res.status(200).json({ okay: "okay" })
+      const data = await loadRecentQueriesFromDatabase("recent")
+      return res.status(200).json(data)
     default:
       return res.status(405).json({})
   }
