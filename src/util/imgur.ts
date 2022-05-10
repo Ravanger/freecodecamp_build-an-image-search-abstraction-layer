@@ -1,9 +1,9 @@
 const API_URL = "https://api.imgur.com/3/gallery/search/top"
 
-const myHeaders = new Headers()
-myHeaders.append(
+const headers = new Headers()
+headers.append(
   "Authorization",
-  `Client-ID ${process.env.NEXT_PUBLIC_IMGUR_CLIENT_ID || ""}`
+  `Client-ID ${process.env.IMGUR_CLIENT_ID || ""}`
 )
 
 export type ImageType = {
@@ -28,7 +28,7 @@ export const queryImage = async (query: string, page?: string) => {
 
   const requestOptions: RequestInit = {
     method: "GET",
-    headers: myHeaders,
+    headers,
     redirect: "follow",
   }
 

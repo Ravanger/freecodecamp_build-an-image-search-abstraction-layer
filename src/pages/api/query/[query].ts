@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next"
+import { saveQueryToDatabase } from "../../../util/firebase"
 import type { ImageType } from "../../../util/imgur"
 import { convertImgurType, queryImage } from "../../../util/imgur"
 
@@ -21,6 +22,7 @@ const query = async (
 
       const data = await queryImage(query, page)
       if (!data) return res.status(500).json({ error: "Failed to get images" })
+      saveQueryToDatabase(query)
       const images = data.map((imgurItem) => convertImgurType(imgurItem))
       return res.status(200).json({ images })
     default:
