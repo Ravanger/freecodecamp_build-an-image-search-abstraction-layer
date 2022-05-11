@@ -1,0 +1,8 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 2ch;
+  margin-top: 1ch;
+  padding: 1ch 10%;
+  text-transform: uppercase;
+}

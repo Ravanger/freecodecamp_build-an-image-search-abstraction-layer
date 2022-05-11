@@ -1,0 +1,24 @@
+:root {
+  --bg-hue: 220;
+  --bg-color: hsla(var(--bg-hue), 50%, 20%, 1);
+  --main-color: hsla(var(--bg-hue), 25%, 65%, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--main-color);
+  margin: 0;
+}
+
+body {
+  font-family: Ubuntu Mono, monospace;
+}
+
+h1 {
+  font-size: clamp(1.8em, 8vw, 2em);
+  white-space: nowrap;
+}
