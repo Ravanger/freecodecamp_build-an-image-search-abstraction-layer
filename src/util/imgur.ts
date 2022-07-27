@@ -21,7 +21,7 @@ export type ImageType = {
   parentPage: string
 }
 
-export const queryImage = async (query: string, page?: string) => {
+export const queryImage = async (query?: string, page?: string) => {
   if (!query) {
     return null
   }
