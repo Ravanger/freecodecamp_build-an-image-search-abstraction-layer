@@ -1,11 +1,9 @@
+@use "./reset.scss";
+
 :root {
   --bg-hue: 220;
   --bg-color: hsla(var(--bg-hue), 50%, 20%, 1);
   --main-color: hsla(var(--bg-hue), 25%, 65%, 1);
-}
-
-* {
-  box-sizing: border-box;
 }
 
 body {
