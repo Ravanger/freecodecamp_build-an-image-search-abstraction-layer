@@ -1,34 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Build an Image Search Abstraction Layer
 
-## Getting Started
+https://www.freecodecamp.org/learn/coding-interview-prep/take-home-projects/build-an-image-search-abstraction-layer
 
-First, run the development server:
+Build a full stack JavaScript app that allows you to search for images like this: https://image-search-abstraction-layer.freecodecamp.rocks/query/lolcats%20funny?page=10 and browse recent search queries like this: https://image-search-abstraction-layer.freecodecamp.rocks/recent/. Use a site builder of your choice to complete the project.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Here are the specific user stories you should implement for this project:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**User Story**: You can get the image URLs, description and page URLs for a set of images relating to a given search string.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+**User Story**: You can paginate through the responses by adding a `?page=2` parameter to the URL.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+**User Story**: You can get a list of the most recently submitted search strings.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+When you are done, make sure a working demo of your project is hosted somewhere public. Then submit the URL to it in the `Solution Link` field. Optionally, also submit a link to your project's source code in the `GitHub Link` field.
