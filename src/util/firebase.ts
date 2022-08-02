@@ -48,7 +48,9 @@ export const loadRecentQueriesFromDatabase = async (refIdentifier: string) => {
   return convertFirebaseType(data)
 }
 
-export const saveQueryToDatabase = (query: string) => {
+export const saveQueryToDatabase = (query?: string) => {
+  if (!query || query.length <= 0) return
+
   const data: QueryDataType = {
     searchQuery: query,
     timeSearched: new Intl.DateTimeFormat(undefined, {
