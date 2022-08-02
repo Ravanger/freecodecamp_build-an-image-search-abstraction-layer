@@ -2,12 +2,15 @@ import type { NextPage } from "next"
 import { useState } from "react"
 import Form from "../components/Form"
 import Header from "../components/Header"
+import ImageGrid from "../components/ImageGrid"
 import Spinner from "../components/Spinner"
 import Wrapper from "../components/Wrapper"
+import type { ImageType } from "../util/imgur"
 
 const Home: NextPage = () => {
   const [searchInput, setSearchInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [images, setImages] = useState<ImageType[]>([])
 
   const submitForm = async (
     event:
@@ -22,8 +25,9 @@ const Home: NextPage = () => {
         throw new Error("Error with search input")
       }
       const data = await res.json()
+
       if (!!data.images) {
-        console.log(data)
+        setImages(data.images)
       }
     } catch (error) {
       console.error(error)
@@ -41,6 +45,7 @@ const Home: NextPage = () => {
         setSearchInput={setSearchInput}
       />
       {isLoading && <Spinner />}
+      {Array.isArray(images) && <ImageGrid images={images} />}
     </Wrapper>
   )
 }

@@ -1,5 +1,9 @@
 .spinner {
-  animation: spinner 0.666s infinite linear;
+  display: inline;
+  > svg {
+    display: inherit;
+    animation: spinner 0.666s infinite linear;
+  }
 }
 
 @keyframes spinner {

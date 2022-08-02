@@ -12,7 +12,7 @@ export type ImageType = {
   height: number
   size: number
   url: string
-  thumbnail?: {
+  thumbnail: {
     url: string
     width: number
     height: number

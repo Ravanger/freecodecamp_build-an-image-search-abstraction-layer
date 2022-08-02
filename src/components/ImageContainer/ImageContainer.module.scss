@@ -1,0 +1,10 @@
+.imageWrapper {
+  display: flex;
+  isolation: isolate;
+  align-items: center;
+  justify-content: center;
+  > span {
+    position: absolute;
+    z-index: -10;
+  }
+}
