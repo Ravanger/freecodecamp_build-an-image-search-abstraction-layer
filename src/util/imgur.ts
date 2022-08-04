@@ -55,11 +55,13 @@ export const queryImage = async (query?: string, page?: string) => {
 
 export const convertImgurType = (
   imgurItem: ImgurRestApi.GalleryItem
-): ImageType => {
-  let activeImage: ImgurRestApi.Image | ImgurRestApi.GalleryImage
+): ImageType | undefined => {
+  let activeImage: ImgurRestApi.Image | ImgurRestApi.GalleryImage | undefined
   if (imgurItem.is_album) {
     activeImage = (imgurItem as ImgurRestApi.GalleryAlbum).images[0]
   } else activeImage = imgurItem as ImgurRestApi.GalleryImage
+
+  if (!activeImage) return
 
   let activeImageLink = activeImage.animated
     ? activeImage.mp4 || ""
