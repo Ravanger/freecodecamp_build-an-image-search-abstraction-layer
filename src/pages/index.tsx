@@ -3,6 +3,7 @@ import { useState } from "react"
 import Form from "../components/Form"
 import Header from "../components/Header"
 import ImageGrid from "../components/ImageGrid"
+import Spacer from "../components/Spacer"
 import Spinner from "../components/Spinner"
 import Wrapper from "../components/Wrapper"
 import type { ImageType } from "../util/imgur"
@@ -44,7 +45,9 @@ const Home: NextPage = () => {
         searchInput={searchInput}
         setSearchInput={setSearchInput}
       />
-      {isLoading && <Spinner />}
+      <Spacer />
+      <Spinner loading={isLoading} />
+      <Spacer />
       {Array.isArray(images) && <ImageGrid images={images} />}
     </Wrapper>
   )

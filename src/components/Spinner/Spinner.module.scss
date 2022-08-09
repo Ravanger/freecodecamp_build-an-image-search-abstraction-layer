@@ -1,5 +1,7 @@
 .spinner {
   display: inline;
+  height: 3ch;
+
   > svg {
     display: inherit;
     animation: spinner 0.666s infinite linear;
