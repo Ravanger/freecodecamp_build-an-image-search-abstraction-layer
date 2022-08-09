@@ -1,10 +1,28 @@
 .imageWrapper {
   display: flex;
-  isolation: isolate;
   align-items: center;
   justify-content: center;
-  > span {
-    position: absolute;
-    z-index: -10;
+  width: 100%;
+
+  > * {
+    width: 100%;
   }
+}
+
+.loader {
+  position: absolute;
+  width: initial;
+}
+
+.imageCard {
+  width: 100%;
+
+  > span {
+    aspect-ratio: 1/1;
+    width: 100% !important;
+  }
+}
+
+.image {
+  width: 160px;
 }

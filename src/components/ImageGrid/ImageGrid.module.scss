@@ -1,0 +1,7 @@
+.imageGrid {
+  display: grid;
+  gap: 2ch;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  max-width: 48rem;
+  width: 100%;
+}
