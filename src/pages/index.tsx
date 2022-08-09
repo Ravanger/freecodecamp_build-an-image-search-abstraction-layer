@@ -20,8 +20,9 @@ const Home: NextPage = () => {
   ) => {
     event.preventDefault()
     setIsLoading(true)
+    setSearchInput(searchInput.trim())
     try {
-      const res = await fetch(`/api/query/${searchInput}?page=0`)
+      const res = await fetch(`/api/query/${searchInput.trim()}?page=0`)
       if (res.status !== 200) {
         throw new Error("Error with search input")
       }
