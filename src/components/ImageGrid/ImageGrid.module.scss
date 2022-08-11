@@ -1,6 +1,7 @@
 .imageGrid {
   display: grid;
   gap: 2ch;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, 160px);
   width: 100%;
+  justify-content: center;
 }
