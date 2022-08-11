@@ -6,10 +6,30 @@
   --main-color: hsla(var(--bg-hue), 25%, 65%, 1);
 }
 
+::-webkit-scrollbar {
+  width: 0.5ch;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+}
+
 body {
   background-color: var(--bg-color);
-  color: var(--main-color);
   margin: 0;
+}
+
+body,
+button {
+  color: var(--main-color);
+}
+
+button {
+  cursor: pointer;
 }
 
 body {
