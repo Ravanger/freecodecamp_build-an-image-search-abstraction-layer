@@ -7,8 +7,11 @@ const ImageGrid: React.FC<ImageGridPropTypes> = ({ images }) => {
 
   return (
     <div className={styles.imageGrid}>
-      {images.map((imageData) => (
-        <ImageContainer imageData={imageData} key={imageData.parentPage} />
+      {images.map((imageData, index) => (
+        <ImageContainer
+          imageData={imageData}
+          key={`${imageData.parentPage}${index}`}
+        />
       ))}
     </div>
   )
