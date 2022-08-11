@@ -4,6 +4,7 @@ import Form from "../components/Form"
 import Header from "../components/Header"
 import ImageGrid from "../components/ImageGrid"
 import Pages from "../components/Pages"
+import ScrollToTopButton from "../components/ScrollToTopButton"
 import Spacer from "../components/Spacer"
 import Spinner from "../components/Spinner"
 import Wrapper from "../components/Wrapper"
@@ -78,6 +79,7 @@ const Home: NextPage = () => {
       <Spacer />
       <ImageGrid images={images} />
       <Spacer size="2rem" />
+      <ScrollToTopButton />
     </Wrapper>
   )
 }
