@@ -52,7 +52,7 @@ const Home: NextPage = () => {
       <Spacer />
       <Spinner loading={isLoading} />
       <Spacer />
-      {Array.isArray(images) && <ImageGrid images={images} />}
+      <ImageGrid images={images} />
     </Wrapper>
   )
 }
