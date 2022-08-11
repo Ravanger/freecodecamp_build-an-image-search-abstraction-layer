@@ -88,3 +88,24 @@ export const convertImgurType = (
     parentPage: activeImageLink.replace("i.", "").replace(/\.[^/.]+$/, ""),
   }
 }
+
+export const getImageData = async (query: string, page: number) => {
+  if (Number.isNaN(page) || page < 0 || !query) return
+  let images: ImageType[] = []
+
+  try {
+    const res = await fetch(`/api/query/${query}?page=${page}`)
+    if (res.status !== 200) {
+      throw Error("Error with search input")
+    }
+    const data = await res.json()
+
+    if (!!data.images) {
+      images = data.images
+    }
+  } catch (error) {
+    throw error
+  } finally {
+    return images
+  }
+}

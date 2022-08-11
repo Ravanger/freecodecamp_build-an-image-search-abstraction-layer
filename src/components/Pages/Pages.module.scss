@@ -1,0 +1,11 @@
+.pageSelector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+  gap: 2ch;
+
+  > span {
+    grid-column-start: 2;
+  }
+}
