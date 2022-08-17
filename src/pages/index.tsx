@@ -1,5 +1,5 @@
 import type { NextPage } from "next"
-import { useEffect, useState, useCallback } from "react"
+import { useState } from "react"
 import Form from "../components/Form"
 import Header from "../components/Header"
 import ImageGrid from "../components/ImageGrid"
@@ -16,14 +16,17 @@ const Home: NextPage = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [images, setImages] = useState<ImageType[]>([])
   const [currentPage, setCurrentPage] = useState(0)
-  const updateImages = useCallback(async () => {
-    if (!searchInput || Number.isNaN(currentPage) || currentPage < 0) return
+
+  const updateImages = async (page: number) => {
+    if (!searchInput || Number.isNaN(page) || page < 0) return
+
+    setIsLoading(true)
 
     setImages([])
     const trimmedInput = searchInput.trim()
     setSearchInput(trimmedInput)
     try {
-      const imageData = await getImageData(trimmedInput, currentPage)
+      const imageData = await getImageData(trimmedInput, page)
       if (!!imageData) {
         setImages(imageData)
       }
@@ -32,12 +35,7 @@ const Home: NextPage = () => {
     } finally {
       setIsLoading(false)
     }
-  }, [currentPage, searchInput])
-
-  useEffect(() => {
-    if (!isLoading) return
-    updateImages()
-  }, [isLoading, updateImages])
+  }
 
   const submitForm = async (
     event:
@@ -46,21 +44,21 @@ const Home: NextPage = () => {
   ) => {
     event.preventDefault()
     setCurrentPage(0)
-    setIsLoading(true)
+    await updateImages(currentPage)
   }
 
   const prevPage = async () => {
-    if (currentPage > 0) {
-      const prevPage = currentPage - 1
-      setCurrentPage(prevPage)
-      setIsLoading(true)
-    }
+    if (currentPage <= 0) return
+
+    const prevPage = currentPage - 1
+    setCurrentPage(prevPage)
+    await updateImages(prevPage)
   }
 
   const nextPage = async () => {
     const nextPage = currentPage + 1
     setCurrentPage(nextPage)
-    setIsLoading(true)
+    await updateImages(nextPage)
   }
 
   return (
@@ -99,6 +97,7 @@ const Home: NextPage = () => {
         page={currentPage}
         prevPage={prevPage}
         nextPage={nextPage}
+        prevPageAvailable={currentPage > 0}
         nextPageAvailable={images.length >= 60}
       />
       <Spacer />

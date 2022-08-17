@@ -6,12 +6,9 @@ const Pages: React.FC<PagesPropTypes> = ({
   page,
   prevPage,
   nextPage,
+  prevPageAvailable,
   nextPageAvailable,
 }) => {
-  const prevPageAvailable = page > 0
-
-  if (!prevPageAvailable && !nextPageAvailable) return null
-
   return (
     <div className={styles.pageSelector}>
       {prevPageAvailable && (
