@@ -8,13 +8,12 @@
 
   > * {
     width: 100%;
-  }
-
-  :hover,
-  :focus {
-    .imageDescription {
-      opacity: 1;
-      transform: translateY(0);
+    &:hover,
+    &:focus {
+      .imageDescription {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 }
