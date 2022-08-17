@@ -3,15 +3,42 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  position: relative;
+  isolation: isolate;
 
   > * {
     width: 100%;
+  }
+
+  :hover,
+  :focus {
+    .imageDescription {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
 .loader {
   position: absolute;
   width: initial;
+}
+
+.imageDescription {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 2ch;
+  text-align: center;
+  font-size: 1.5ch;
+  background: linear-gradient(0deg, var(--bg-color) 50%, rgba(0, 0, 0, 0) 100%);
+  transition: all 0.1s ease;
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 .imageCard {

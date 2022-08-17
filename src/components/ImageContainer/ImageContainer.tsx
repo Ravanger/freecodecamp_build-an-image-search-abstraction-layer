@@ -15,6 +15,7 @@ const ImageContainer: React.FC<ImageContainerPropTypes> = ({ imageData }) => {
         </div>
       )}
       <a href={imageData.parentPage} target="_blank" rel="noreferrer">
+        <div className={styles.imageDescription}>{imageData.description}</div>
         <div className={styles.imageCard}>
           <Image
             src={imageData.thumbnail.url}
