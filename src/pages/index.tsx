@@ -9,6 +9,7 @@ import Spacer from "../components/Spacer"
 import Spinner from "../components/Spinner"
 import Wrapper from "../components/Wrapper"
 import { getImageData, ImageType } from "../util/imgur"
+import { NextSeo } from "next-seo"
 
 const Home: NextPage = () => {
   const [searchInput, setSearchInput] = useState("")
@@ -64,6 +65,27 @@ const Home: NextPage = () => {
 
   return (
     <Wrapper>
+      <NextSeo
+        title="Imgur Search"
+        description="freeCodeCamp: Build an Image Search Abstraction Layer"
+        openGraph={{
+          title: "Imgur Search",
+          description: "freeCodeCamp: Build an Image Search Abstraction Layer",
+          type: "website",
+          site_name: "Imgur Search",
+        }}
+        twitter={{
+          handle: "@BRossovsky",
+          site: "@BRossovsky",
+          cardType: "summary",
+        }}
+        additionalMetaTags={[
+          {
+            name: "viewport",
+            content: "width=device-width, initial-scale=1.0",
+          },
+        ]}
+      />
       <Header />
       <Form
         onSubmit={submitForm}
